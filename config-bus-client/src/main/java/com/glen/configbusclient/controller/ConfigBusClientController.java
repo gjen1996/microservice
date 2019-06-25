@@ -1,8 +1,4 @@
-package com.glen.configbusclient.controller;/**
- * @author Glen
- * @create 2019- 06-2019/6/25-11:19
- * @Description
- */
+package com.glen.configbusclient.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @create 2019/6/25 11:19 
  * @Description
  */
+@RestController
 public class ConfigBusClientController {
-    @RestController
-    public class configClientController {
-        //@Value("#{remoteSettings['remote.ip']}")
+
         @Value("${neo.hello}")
         private String hello;
 
@@ -24,5 +19,5 @@ public class ConfigBusClientController {
         public String from() {
             return this.hello;
         }
-    }
+
 }
