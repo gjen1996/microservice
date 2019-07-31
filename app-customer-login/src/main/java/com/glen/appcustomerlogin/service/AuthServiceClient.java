@@ -25,6 +25,4 @@ public interface AuthServiceClient {
                  @RequestParam("grant_type") String grant_type,
                  @RequestParam("username") String username,
                  @RequestParam("password") String password);
-
-
 }

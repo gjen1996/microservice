@@ -66,6 +66,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        //这样，页面提交时候，密码以明文的方式进行匹配。
 //        auth.inMemoryAuthentication().passwordEncoder(new BPwdEncoderUtil()).withUser("cxh").password("cxh").roles("ADMIN");
         auth.userDetailsService(userServiceDetail).passwordEncoder(passwordEncoder());
-        log.info("---鉴权"+auth.userDetailsService(userServiceDetail).passwordEncoder(passwordEncoder()));
     }
 }

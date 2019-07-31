@@ -7,11 +7,8 @@ package com.glen.appcustomerlogin.service;/**
 import com.glen.appcustomerlogin.config.BPwdEncoderUtil;
 import com.glen.appcustomerlogin.entity.JWT;
 import com.glen.appcustomerlogin.entity.User;
-import com.glen.appcustomerlogin.entity.UserLoginDTO;
-import com.glen.appcustomerlogin.exception.UserLoginException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.OAuth2ClientProperties;
 import org.springframework.context.annotation.Bean;
@@ -22,23 +19,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collections;
-import java.util.List;
 
-
-import java.util.Base64;
-import java.util.Collections;
 
 
 /**

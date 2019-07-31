@@ -49,10 +49,10 @@ import java.util.concurrent.TimeUnit;
 @EnableAuthorizationServer
 public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
-    @Value("${config.oauth2.privateKey}")
-    private String privateKey ;
-    @Value("${config.oauth2.publicKey}")
-    private String publicKey;
+//    @Value("${config.oauth2.privateKey}")
+//    private String privateKey ;
+//    @Value("${config.oauth2.publicKey}")
+//    private String publicKey;
 
     @Autowired
     @Qualifier("authenticationManagerBean")

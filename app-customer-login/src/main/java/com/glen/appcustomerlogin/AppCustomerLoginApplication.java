@@ -11,9 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableFeignClients
 public class AppCustomerLoginApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(AppCustomerLoginApplication.class, args);
     }
-
 }

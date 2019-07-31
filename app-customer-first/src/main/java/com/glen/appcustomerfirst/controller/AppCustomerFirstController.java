@@ -24,4 +24,8 @@ public class AppCustomerFirstController {
     public String test() {
         return appCustomerFirstServer.test();
     }
+    @RequestMapping(value = "/user/login", method = RequestMethod.GET)
+    public String test1() {
+        return "这是一个测试，恭喜程序猿小哥哥，路由拦截转发成功啦";
+    }
 }

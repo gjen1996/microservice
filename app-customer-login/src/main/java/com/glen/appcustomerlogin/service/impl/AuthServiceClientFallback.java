@@ -23,7 +23,7 @@ public class AuthServiceClientFallback implements AuthServiceClient {
                         String grant_type,
                         String username,
                         String password) {
-       log.info("Fallback of getToken is executed");
+       log.info("您获取令牌失败了哦，请稍后重试");
         return null;
     }
 }
