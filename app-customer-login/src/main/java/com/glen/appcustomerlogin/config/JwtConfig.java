@@ -41,8 +41,6 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 @EnableAuthorizationServer
 public class JwtConfig {
-    @Value("${config.oauth2.publicKey}")
-    private String publicKey;
     public static final String public_cert = "public.cert";
     @Bean
     @Qualifier("tokenStore")
@@ -52,19 +50,15 @@ public class JwtConfig {
 
     @Bean
     protected JwtAccessTokenConverter jwtTokenEnhancer()  {
-//        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-//          converter.setVerifierKey(publicKey);
 //        converter.setSigningKey("123");
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         Resource resource =  new ClassPathResource(public_cert);
-
         String publicKey;
         try {
             publicKey = new String(FileCopyUtils.copyToByteArray(resource.getInputStream()));
         }catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         converter.setVerifierKey(publicKey);
         log.info("public key:"+converter);
         return converter;

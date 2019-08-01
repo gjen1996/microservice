@@ -9,31 +9,16 @@ package com.glen.appcustomerlogin.controller;/**
  * @create 2019/7/9 17:21
  * @Description
  */
-import com.glen.appcustomerlogin.config.BPwdEncoderUtil;
 import com.glen.appcustomerlogin.entity.User;
-import com.glen.appcustomerlogin.entity.UserLoginDTO;
-import com.glen.appcustomerlogin.service.UserRepository;
 import com.glen.appcustomerlogin.service.UserServiceDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.security.oauth2.OAuth2ClientProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.security.oauth2.provider.error.DefaultWebResponseExceptionTranslator;
-import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.*;
@@ -57,6 +42,6 @@ public class AppcustomerLoginController {
     @RequestMapping("/foo")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String getFoo() {
-        return "i'm foo, " + UUID.randomUUID().toString();
+        return "程序猿小哥哥，你的鉴权测试通过啦";
     }
 }
