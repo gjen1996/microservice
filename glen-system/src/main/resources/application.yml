@@ -1,0 +1,52 @@
+server:
+  port: 8200
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true     #访问路径可以显示IP地址
+spring:
+  application:
+    name: glen-system
+  profiles: dev
+  security:
+    user:
+      name: glen
+      password: 123456
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      uri: http://localhost:8082
+      discovery:
+        enabled: true
+        service-id: glen-config
+  main:
+    allow-bean-definition-overriding: true
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:8085/oauth/token
+      client-id: user-service
+      client-secret: 123456
+      grant-type: password,refresh_token
+      scope: servic
+      user-authorization-uri: http://localhost:8085/oauth/authorize
+    resource:
+      id: user-service
+      jwt:
+        key-uri: http://localhost:8085/oauth/token_key
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+config:
+  oauth2:
+    publicKey: "-----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm4irSNcR7CSSfXconxL4g4M4j34wTWdTv93ocMn4VmdB7rCBU/BlxXtBUf/cgLIgQhQrAPszSZSmxiEXCOkGPr4aQBQuPgmNIR95Dhbzw/ZN0BnecAt3ZfkkDBHv8kH3kR/jYGTdwrxKeDgXGljNsTRhbjuASxPG/Z6gU1yRPCsgc2r8NYnztWGcDWqaobqjG3/yzFmusoAboyV7asIpo4yk378LmonDNwxnOOTb2Peg5PeelwfOwJPbftK1VOOt18zA0cchw6dHUzq9NlB8clps/VdBap9BxU3/0YoFXRIc18nyzrWo2BcY2KQqX//AJC3OAfrfDmo+BGK8E0mp8wIDAQAB
+      -----END PUBLIC KEY-----"
+

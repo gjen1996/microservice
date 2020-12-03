@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author Glen
- * @create 2019/6/24 17:04 
+ * @create 2019/6/24 17:04
  * @Description
  */
-@FeignClient(value="app-server", fallback = AppCustomerFirstServerFallback.class)
+@FeignClient(value = "app-server", fallback = AppCustomerFirstServerFallback.class)
 public interface AppCustomerFirstServer {
     @RequestMapping("/test")
     public String test();
-
 }

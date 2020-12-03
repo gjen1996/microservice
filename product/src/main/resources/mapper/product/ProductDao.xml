@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.glen.product.dao.ProductDao">
+    <update id="releaseProduct" parameterType="Map">
+        update product set
+        added_date=#{addedDate},dismounted_date=#{dismountedDate},status='releaseCheck',release_check=1 where id = #{id}
+    </update>
+    <update id="dismountedProduct" parameterType="Map">
+        update product set status= #{status} where id = #{id}
+    </update>
+
+    <update id="changeStatusToAdded">
+        update product set status='added' where status='adding' and status!='dismounted' and now() between added_date
+        and dismounted_date
+    </update>
+
+    <update id="changeStatusToDismounted">
+        update product set status='dismounted' where
+        now() &gt; dismounted_date
+    </update>
+
+    <select id="isRatePlanUsed" parameterType="String" resultType="int">
+        select count(*) from product where rate_plan_id=#{rate_plan_id}
+    </select>
+    <select id="getProductEntity"
+            resultType="com.glen.product.entity.ProductEntity">
+        select * from product where product_id = #{productId}
+    </select>
+    <update id="checkProduct" parameterType="Map">
+        update product set status= #{status} where id = #{id}
+    </update>
+    <update id="deleteProductById" parameterType="int">
+        update product set is_delete= 1 where id = #{id}
+    </update>
+    <update id="productCheckDelete" parameterType="int">
+        update product set product_check= 0 where id = #{id}
+    </update>
+    <update id="releaseCheckDelete" parameterType="int">
+        update product set release_check= 0 where id = #{id}
+    </update>
+
+
+    <update id="submitCheck" parameterType="Map">
+        update product set status='productCheck',product_check=1 where id = #{id}
+    </update>
+
+    <select id="getProductInfoByIccid"
+            resultType="com.glen.product.entity.ProductEntity">
+        SELECT
+        a.*
+        FROM
+        product a
+        LEFT JOIN store_terminnal_detail b ON a.product_id = b.product_id
+        WHERE
+        b.iccid = #{iccid}
+    </select>
+    <!--<select id="getTerminalByProductIdAndStatus" resultType = "com.framework.common.account.entity.StoreTerminnalDetail">-->
+    <!--select * from store_terminnal_detail where product_id =#{productId} and status ='TEST_READY_NAME'-->
+    <!--</select>-->
+
+</mapper>

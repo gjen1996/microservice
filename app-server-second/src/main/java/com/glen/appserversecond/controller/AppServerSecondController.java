@@ -15,7 +15,7 @@ public class AppServerSecondController {
     String port;
 
     @RequestMapping("/test")
-    public String test(){
-        return "Hello,world，恭喜您调用成功了，这个是appServerSecond,port为：" +port;
+    public String test() {
+        return "Hello,world，恭喜您调用成功了，这个是appServerSecond,port为：" + port;
     }
 }

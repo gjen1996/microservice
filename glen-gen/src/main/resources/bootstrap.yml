@@ -1,0 +1,76 @@
+server:
+  port: 8100
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true     #访问路径可以显示IP地址
+spring:
+  application:
+    name: glen-gen
+    admin:
+      enabled: false
+  profiles: dev
+  security:
+    user:
+      name: glen
+      password: 123456
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      uri: http://localhost:8082
+      discovery:
+        enabled: true
+        service-id: glen-config
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      username: root
+      password: glen1996
+        #driverClassName: oracle.jdbc.driver.OracleDriver
+        #url: jdbc:oracle:thin:@localhost:1521:orcl
+      driver-class-name: com.mysql.jdbc.Driver
+        #serverTimezone=UTC 设置时区
+      url: jdbc:mysql://localhost:3306/springauth?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+        #最小连接数
+      minIdLe: 5
+        #最大连接数
+      maxActive: 30
+        #解决mysql8小时问题
+      validationQuery: SELECT 'X'
+        #空闲链接最小空闲时间
+      minEvictableIdleTimeMillis: 3000
+        #空闲连接检查时间间隔
+      timeBetweenEvictionRunsMillis: 6000
+      maxWait: 10000
+      login:
+        password:
+        username:
+    #ORM映射设置，hibernate需要配置jpa
+  jpa:
+    hibernate:
+        #是否自动建表
+      ddl-auto: update
+    properties:
+      hibernate:
+          #是否自动打印hql对应的sql语句
+        show-sql: false
+          #是否格式化sql语句
+        format-sql: false
+          #事务交由spring管理
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        cache:
+          use_second_level_cache: false
+          use_query_cache: false
+  main:
+    allow-bean-definition-overriding: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

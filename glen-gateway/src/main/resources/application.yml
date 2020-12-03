@@ -1,0 +1,26 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true     #访问路径可以显示IP地址
+server:
+  port: 8084
+spring:
+  application:
+    name: glen-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      locator:
+        lowerCaseServiceId: true
+      routes:
+        - filters:
+            - StripPrefix=1
+          id: app-customer-login
+          predicates:
+            - Path=/**
+          uri: lb://app-customer-login/user/login

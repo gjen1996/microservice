@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Glen
- * @create 2019/6/24 17:02 
+ * @create 2019/6/24 17:02
  * @Description
  */
 @RestController
@@ -23,9 +23,5 @@ public class AppCustomerFirstController {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {
         return appCustomerFirstServer.test();
-    }
-    @RequestMapping(value = "/user/login", method = RequestMethod.GET)
-    public String test1() {
-        return "这是一个测试，恭喜程序猿小哥哥，路由拦截转发成功啦";
     }
 }

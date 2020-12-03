@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author Glen
- * @create 2019/6/28 11:35 
+ * @create 2019/6/28 11:35
  * @Description 全局异常处理 切面类 ExceptionHandle
  */
 @ControllerAdvice

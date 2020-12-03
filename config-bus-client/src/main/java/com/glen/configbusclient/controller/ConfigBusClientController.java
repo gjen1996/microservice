@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Glen
- * @create 2019/6/25 11:19 
+ * @create 2019/6/25 11:19
  * @Description
  */
 @RestController
 @RefreshScope
 public class ConfigBusClientController {
 
-        @Value("${neo.hello}")
-        private String hello;
+    @Value("${neo.hello}")
+    private String hello;
 
-        @RequestMapping("/hello")
-        public String from() {
-            return this.hello;
-        }
+    @RequestMapping("/hello")
+    public String from() {
+        return this.hello;
+    }
 
 }

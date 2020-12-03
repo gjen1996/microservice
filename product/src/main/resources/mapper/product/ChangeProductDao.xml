@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.glen.product.dao.ChangeProductDao">
+    <select id="getJasperProductStoreInfoByIccid" resultType="java.util.HashMap">
+        SELECT
+        a.iccid,
+        a.account_id as accountId,
+        a.user_id as userId,
+        a.user_name username,
+        b.iccid_balance iccidBalance,
+        c.month_to_date_data_usage as monthToDateDataUsage
+        FROM
+        (select * from jasper_terminal_details where iccid=#{iccid}) c ,
+        store_terminnal_detail a
+        LEFT JOIN account_iccid_cost b ON a.iccid = b.iccid
+        WHERE
+        a.iccid = #{iccid}
+    </select>
+    <select id="getSelectProductType" resultType="java.util.HashMap">
+        SELECT
+        product_id as productId,
+        product_name as productName
+        FROM
+        product
+        WHERE
+        sharing_mode = #{sharingMode}
+        AND
+        status ="added"
+        AND
+        is_delete =0
+        AND (
+        OWNER = "平台"
+        OR OWNER = #{username}
+        )
+    </select>
+</mapper>
